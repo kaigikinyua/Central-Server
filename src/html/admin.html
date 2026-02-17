@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Central Server</title>
+</head>
+<body>
+    <nav class="sideNav">
+        <div class="userCard">
+            <h3>Username</h3>
+            <div class="userProfile">U</div>
+        </div>
+        <div class="navLinks">
+            <button>Database</button>
+            <button>Logs</button>
+            <button>Status</button>
+            <button>Configs</button>
+        </div>
+    </nav>
+    <section class="mainContent">
+        <!--Topnav where you can select the store,duration of analysis and also export the report-->
+        <div class="TopNav" id="topNav">
+            <select name="store" id="storeSelect">
+                <option value="store01">Store 01</option>
+            </select>
+            <input type="date" name="startDate" id="startDate"/>
+            <input type="date" name="endDate" id="endDate"/>
+            <button>Export Report</button>
+        </div>
+        <!--Where the reports are displayed-->
+        <div class="displayReports" id="displayReports"></div>
+    </section>
+</body>
+</html>

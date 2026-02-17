@@ -32,7 +32,13 @@ func loginPage(w http.ResponseWriter, r *http.Request){
 }
 
 //accessing the admin page
-
+func adminPage(w http.ResponseWriter,r *http.Request){
+	http.ServeFile(w,r,"./html/admin.html")
+}
+//accessing the analyst page
+func analystPage(w http.ResponseWriter,r *http.Request){
+	http.ServeFile(w,r,"./html/analyst.html")
+}
 
 //logging into the analyst/admin page
 
@@ -46,11 +52,14 @@ func loginPage(w http.ResponseWriter, r *http.Request){
 //post end of day reports
 //post stock take
 func main() {
-	fs:=http.FileServer(http.Dir("./static"))
+	fs:=http.FileServer(http.Dir("./html/static"))
 	http.Handle("/static/",http.StripPrefix("/static/", fs))
 
 	http.HandleFunc("/", indexPage)
 	http.HandleFunc("/login",loginPage)
+	http.HandleFunc("/admin",adminPage)
+	http.HandleFunc("/analyst",analystPage)
+
 	fmt.Println("Server starting on port 8080...")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
