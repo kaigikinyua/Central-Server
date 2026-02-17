@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyst | Central Server</title>
+</head>
+<body>
+    <nav class="sideNav">
+        <div class="userCard">
+            <h3>Username</h3>
+            <div class="userProfile">U</div>
+        </div>
+        <div class="navLinks">
+            <button>Sales Analysis</button>
+            <button>Stock Analysis</button>
+            <button>Store Sales</button>
+            <button>Store Targets</button>
+            <button>Staff Sales</button>
+            <button>Stock</button>
+            <button>Returns</button>
+        </div>
+        <div class="navLinks">
+            <button>Transfer Orders</button>
+            <button>Search Receipt</button>
+        </div>
+    </nav>
+    <section class="mainContent">
+        <!--Topnav where you can select the store,duration of analysis and also export the report-->
+        <div class="TopNav" id="topNav">
+            <select name="store" id="storeSelect">
+                <option value="store01">Store 01</option>
+            </select>
+            <input type="date" name="startDate" id="startDate"/>
+            <input type="date" name="endDate" id="endDate"/>
+            <button>Export Report</button>
+        </div>
+        <!--Where the reports are displayed-->
+        <div class="displayReports" id="displayReports"></div>
+    </section>
+</body>
+</html>

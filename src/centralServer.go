@@ -1,27 +1,61 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 )
+// serverConfigs struct{
+// 	serverType string
+// 	port int
+// 	mode string
+// 	dbUserName string
+// 	dbPass string
+// 	logFilePath string
+// 	notifEmail string
+// }
 
-type APIStatus struct {
-	Status  string `json:"status"`
-	Message string `json:"message"`
+
+
+//User to Server Requests
+//Accessing the index page
+func indexPage(w http.ResponseWriter, r *http.Request) {
+	if(r.URL.Path!="/"){
+		http.ServeFile(w,r,"./html/404.html")
+	}
+	http.ServeFile(w,r,"./html/index.html")
 }
 
+//Accessing the login page
+func loginPage(w http.ResponseWriter, r *http.Request){
+	http.ServeFile(w,r,"./html/login.html")
+}
+
+//accessing the admin page
+
+
+//logging into the analyst/admin page
+
+
+//requesting data from the server
+
+
+
+//Relay Server requests
+//inventory look up
+//post end of day reports
+//post stock take
 func main() {
-	http.HandleFunc("/", rootUrl)
+	fs:=http.FileServer(http.Dir("./static"))
+	http.Handle("/static/",http.StripPrefix("/static/", fs))
+
+	http.HandleFunc("/", indexPage)
+	http.HandleFunc("/login",loginPage)
 	fmt.Println("Server starting on port 8080...")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func rootUrl(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	response := APIStatus{Status: "OK", Message: "Connected to API"}
-	json.NewEncoder(w).Encode(response)
-}
+
+
